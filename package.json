@@ -1,0 +1,21 @@
+{
+  "name": "DW17VHIY_The_Journey",
+  "version": "1.0.0",
+  "description": "The Journey App for Your Experience",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ardiansoul/DW17VHIY_The-Journey.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ardiansoul/DW17VHIY_The-Journey/issues"
+  },
+  "homepage": "https://github.com/ardiansoul/DW17VHIY_The-Journey#readme",
+  "dependencies": {}
+}
