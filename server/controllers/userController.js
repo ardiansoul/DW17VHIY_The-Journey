@@ -39,6 +39,7 @@ exports.getUserJourney = async (req, res) => {
       where: {
         userId: id,
       },
+      order: [["updatedAt", "DESC"]],
       attributes: {
         exclude: ["userId", "createdAt", "updatedAt"],
       },
@@ -76,7 +77,7 @@ exports.login = async (req, res) => {
     const validEmail = await User.findOne({ where: { email: req.body.email } });
     if (!validEmail)
       return res.status(400).send({
-        message: "username is not invalid",
+        message: "email is not invalid",
       });
 
     const validPass = await bcrypt.compare(
@@ -91,6 +92,7 @@ exports.login = async (req, res) => {
     res.header("x-access-token", token).send({
       message: "you are logged in",
       data: {
+        id: validEmail.id,
         email: validEmail.email,
         accessToken: token,
       },
@@ -138,6 +140,7 @@ exports.register = async (req, res) => {
     res.status(201).send({
       message: "account created successfully",
       data: {
+        id: user.id,
         email: user.email,
         token: token,
       },

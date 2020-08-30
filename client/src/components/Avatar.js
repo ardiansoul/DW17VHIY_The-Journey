@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import Dropdown from "./Dropdown";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { image } from "../images/avatar.jpg";
 
 function Avatar() {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -11,9 +14,15 @@ function Avatar() {
         onClick={() => {
           setShowDropdown(!showDropdown);
         }}
+        className="avatar btn"
       >
-        Avatar
+        {image ? (
+          <img src={image} alt="avatar" />
+        ) : (
+          <FontAwesomeIcon icon={faUser} />
+        )}
       </button>
+
       {showDropdown && <Dropdown />}
     </div>
   );

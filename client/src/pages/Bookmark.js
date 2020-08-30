@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Navbar from "../components/Navbar";
-import JourneyCard from "../components/JourneyCard";
+import BookmarkCard from "../components/bookmarkCard";
 import Axios from "axios";
+import { authContext } from "../context/auth";
 
 function Bookmark() {
   const [BookmarkData, setBookmarkData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const userId = 1;
+  const { userId } = useContext(authContext);
   const token = localStorage.getItem("token");
+  const [reFatch, setRefatch] = useState(false);
+
   useEffect(() => {
     const fetchdata = async () => {
       setIsLoading(true);
@@ -23,22 +26,35 @@ function Bookmark() {
       setIsLoading(false);
     };
     fetchdata();
-  }, []);
+    setRefatch(false);
+  }, [reFatch]);
+
+  const fetchHandle = () => {
+    setRefatch(true);
+  };
 
   const list = BookmarkData.map((bookmark) => (
-    <JourneyCard
+    <BookmarkCard
       id={bookmark.id}
       title={bookmark.Journey.title}
       description={bookmark.Journey.description}
+      setRefetch={setRefatch}
+      fetchHandle={fetchHandle}
     />
   ));
 
   return (
-    <div>
+    <>
       <Navbar />
-      <h1> Bookmark </h1>
-      {isLoading ? <h3>Loading...</h3> : <div>{list}</div>}
-    </div>
+      <div className="section">
+        <h1 className="bookmark-title">Bookmark</h1>
+        {isLoading ? (
+          <h3>Loading...</h3>
+        ) : (
+          <div className="bookmark-grid">{list}</div>
+        )}
+      </div>
+    </>
   );
 }
 

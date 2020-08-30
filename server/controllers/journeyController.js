@@ -2,18 +2,9 @@ const { User, Journey } = require("../models");
 const { journeyValidator } = require("../middlewares/validation");
 
 exports.getAllJourney = async (req, res) => {
-  // let query = null;
-  // if (req.query.title) {
-  //   query = req.query.title;
-  // }
-
   try {
     const data = await Journey.findAll({
-      // if(query) {
-      //   where: {
-      //     title: query;
-      //   }
-      // },
+      order: [["updatedAt", "DESC"]],
       attributes: {
         exclude: ["createdAt", "updatedAt"],
       },
@@ -42,10 +33,10 @@ exports.getJourney = async (req, res) => {
   try {
     const data = await Journey.findOne({
       where: {
-        userId: id,
+        id: id,
       },
       attributes: {
-        exclude: ["createdAt", "updatedAt"],
+        exclude: ["updatedAt"],
       },
       include: {
         model: User,

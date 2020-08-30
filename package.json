@@ -4,7 +4,9 @@
   "description": "The Journey App for Your Experience",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "\"cd server && npm run devStart\"",
+    "client": "\"cd client && npm start\"",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -17,5 +19,8 @@
     "url": "https://github.com/ardiansoul/DW17VHIY_The-Journey/issues"
   },
   "homepage": "https://github.com/ardiansoul/DW17VHIY_The-Journey#readme",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  }
 }

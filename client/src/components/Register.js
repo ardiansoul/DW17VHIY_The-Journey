@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import { authContext } from "../context/auth";
 import Axios from "axios";
+import leaf from "../images/leaf.svg";
+import map from "../images/map.svg";
 
 function Register({ registerHandler }) {
   const [inputRegister, setInputRegister] = useState({
@@ -38,80 +40,73 @@ function Register({ registerHandler }) {
     }
   };
   return (
-    <div className="modal-register">
-      <img
-        src={process.env.PUBLIC_URL + "/images/hibicus.svg"}
-        className="hibicus"
-        alt="hibicus"
-      />
-      <img
-        src={process.env.PUBLIC_URL + "/images/palm.svg"}
-        className="palm"
-        alt="palm"
-      />
-      <div className="modal-content">
-        <div className="modal-login-header">
-          <h5 className="modal-login-title">Register</h5>
-          {error && <div className="alert alert-danger m-4">{error}</div>}
+    <div className="modal">
+      <img src={map} className="map" alt="map" />
+      <img src={leaf} className="leaf" alt="leaf" />
+
+      <div className="modal-header">
+        <h5 className="modal-title">Register</h5>
+        {error && <div className="modal-alert">{error}</div>}
+      </div>
+      <form
+        onSubmit={(event) => {
+          handleSubmit(event);
+        }}
+        className="modal-form"
+      >
+        <div className="modal-body">
+          <label>Full Name</label>
+          <input
+            type="text"
+            className="form-control"
+            name="fullName"
+            value={fullName}
+            onChange={registerChange}
+            placeholder="Full Name"
+          />
+          <label>Email</label>
+          <input
+            type="email"
+            className="form-control"
+            name="email"
+            value={email}
+            onChange={registerChange}
+            placeholder="Email"
+          />
+          <label>Password</label>
+          <input
+            type="password"
+            className="form-control"
+            name="password"
+            value={password}
+            onChange={registerChange}
+            placeholder="password"
+          />
+          <label>Phone</label>
+          <input
+            type="number"
+            className="form-control"
+            name="phone"
+            value={phone}
+            onChange={registerChange}
+            placeholder="Phone"
+          />
+          <label>Address</label>
+          <input
+            type="text"
+            className="form-control"
+            name="address"
+            value={address}
+            onChange={registerChange}
+            placeholder="address"
+          />
         </div>
-        <form
-          onSubmit={(event) => {
-            handleSubmit(event);
-          }}
-          className="form-group modal-login-form"
-        >
-          <div className="modal-login-body">
-            <label>Full Name</label>
-            <input
-              type="text"
-              className="form-control"
-              name="fullName"
-              value={fullName}
-              onChange={registerChange}
-              placeholder="Full Name"
-            />
-            <label>Email</label>
-            <input
-              type="email"
-              className="form-control"
-              name="email"
-              value={email}
-              onChange={registerChange}
-              placeholder="Email"
-            />
-            <label>Password</label>
-            <input
-              type="password"
-              className="form-control"
-              name="password"
-              value={password}
-              onChange={registerChange}
-              placeholder="password"
-            />
-            <label>Phone</label>
-            <input
-              type="number"
-              className="form-control"
-              name="phone"
-              value={phone}
-              onChange={registerChange}
-              placeholder="Phone"
-            />
-            <label>Address</label>
-            <input
-              type="text"
-              className="form-control"
-              name="address"
-              value={address}
-              onChange={registerChange}
-              placeholder="address"
-            />
-          </div>
-          <button type="submit" className="btn btn-block my-4 yellow">
+        <div className="modal-button">
+          <button type="submit" className="btn btn-register">
             Register
           </button>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   );
 }

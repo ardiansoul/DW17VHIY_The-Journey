@@ -3,12 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^21.0.0",
+    "@ckeditor/ckeditor5-ckfinder": "^21.0.0",
+    "@ckeditor/ckeditor5-editor-classic": "^22.0.0",
+    "@ckeditor/ckeditor5-react": "^2.1.0",
+    "@ckeditor/ckeditor5-upload": "^22.0.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "@tinymce/tinymce-react": "^3.6.0",
     "axios": "^0.20.0",
+    "draft-js": "^0.11.7",
+    "draft-js-plugin-editor": "0.0.0",
+    "html-react-parser": "^0.13.0",
+    "moment": "^2.27.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-froala-wysiwyg": "^3.2.1-1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3"
   },
@@ -18,6 +32,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:5000",
   "eslintConfig": {
     "extends": "react-app"
   },

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import Navbar from "../components/Navbar";
 import JourneyGrid from "../components/JourneyGrid";
+import HeroImage from "../components/HeroImage";
+import { authContext } from "../context/auth";
 
 function Home({
   showModalLogin,
@@ -8,6 +10,7 @@ function Home({
   setShowModalLogin,
   setShowModalRegister,
 }) {
+  const { isLogin } = useContext(authContext);
   return (
     <div>
       <Navbar
@@ -16,9 +19,11 @@ function Home({
         showModalLogin={showModalLogin}
         showModalRegister={showModalRegister}
       />
-      <h1> Home </h1>
-
-      <JourneyGrid />
+      {!isLogin ? <HeroImage /> : ""}
+      <JourneyGrid
+        showModalLogin={showModalLogin}
+        setShowModalLogin={setShowModalLogin}
+      />
     </div>
   );
 }

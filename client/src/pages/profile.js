@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Axios from "axios";
 import JourneyCard from "../components/JourneyCard";
+import avatar from "../images/avatar.jpg";
 
 function Profile() {
   const [JourneyData, setJourneyData] = useState([]);
   const [ProfileData, setProfileData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const userId = 1;
-  const token = localStorage.getItem(token);
+  const token = localStorage.token;
   useEffect(() => {
     const fetchdata = async () => {
       setIsLoading(true);
@@ -44,14 +45,21 @@ function Profile() {
   ));
 
   return (
-    <div>
+    <>
       <Navbar />
-      <h1> Profile </h1>
-      <div className="profile">
-        <h3>{ProfileData.fullName}</h3>
+      <div className="section">
+        <h1> Profile </h1>
+        <div className="profile">
+          <img className="avatar profile-image" src={avatar} alt="avatar" />
+          <h3 className="profile-title">{ProfileData.fullName}</h3>
+        </div>
+        {isLoading ? (
+          <h3>Loading...</h3>
+        ) : (
+          <div className="journey-grid">{list}</div>
+        )}
       </div>
-      {isLoading ? <h3>Loading...</h3> : <div>{list}</div>}
-    </div>
+    </>
   );
 }
 

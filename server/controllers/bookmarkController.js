@@ -8,6 +8,7 @@ exports.getBookmark = async (req, res) => {
       where: {
         userId: id,
       },
+      order: [["updatedAt", "DESC"]],
       attributes: {
         exclude: ["createdAt", "updatedAt"],
       },
@@ -74,5 +75,24 @@ exports.postBookmark = async (req, res) => {
       err
     );
     // console.log(err);
+  }
+};
+
+exports.deleteBookmark = async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    const data = await Bookmark.destroy({
+      where: {
+        id: id,
+      },
+    });
+
+    res.status(200).send({
+      message: "journey seccessfully unbookmarked",
+      data,
+    });
+  } catch (err) {
+    res.status(500).send({ error: err }, err);
   }
 };
