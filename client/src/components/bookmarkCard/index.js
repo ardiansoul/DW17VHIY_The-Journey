@@ -49,8 +49,10 @@ function BookmarkCard({ id, title, image, description, fetchHandle }) {
       </button>
 
       <Link to={`/detail/${id}`} className="journey-card-content">
-        <div className="journey-card-desc">{parse(description)}</div>
-        <h4 className="journey-card-title">{title}</h4>
+        <div className="journey-card-desc">
+          {parse(description.substr(0, 200) + "...")}
+        </div>
+        <h4 className="journey-card-title">{title.substr(0, 30) + "..."}</h4>
       </Link>
     </div>
   );

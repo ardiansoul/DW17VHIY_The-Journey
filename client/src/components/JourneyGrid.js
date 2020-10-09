@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import JourneyCard from "./JourneyCard";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 function JourneyGrid({ setShowModalLogin, showModalLogin }) {
   const [journeyData, setJourneyData] = useState([]);
@@ -27,11 +28,7 @@ function JourneyGrid({ setShowModalLogin, showModalLogin }) {
     fetchdata();
   }, [url]);
 
-  let filteredData = journeyData.filter((journey) => {
-    return journey.title.includes(query);
-  });
-
-  const list = filteredData.map((journey) => (
+  const list = journeyData.map((journey) => (
     <JourneyCard
       showModalLogin={showModalLogin}
       setShowModalLogin={setShowModalLogin}
@@ -61,9 +58,27 @@ function JourneyGrid({ setShowModalLogin, showModalLogin }) {
         </button>
       </div>
       {isLoading ? (
-        <h3>Loading...</h3>
-      ) : (
+        <SkeletonTheme color="#bdc3c7" highlightColor="#95a5a6">
+          <div className="loading-skeleton">
+            <Skeleton width={300} height={150} />
+            <Skeleton width={300} height={40} />
+            <Skeleton width={300} height={100} />
+          </div>
+          <div className="loading-skeleton">
+            <Skeleton width={300} height={150} />
+            <Skeleton width={300} height={40} />
+            <Skeleton width={300} height={100} />
+          </div>
+          <div className="loading-skeleton">
+            <Skeleton width={300} height={150} />
+            <Skeleton width={300} height={40} />
+            <Skeleton width={300} height={100} />
+          </div>
+        </SkeletonTheme>
+      ) : journeyData.length != 0 ? (
         <div className="journey-grid">{list}</div>
+      ) : (
+        <div className="empty-alert">The Journey has not been found</div>
       )}
     </div>
   );

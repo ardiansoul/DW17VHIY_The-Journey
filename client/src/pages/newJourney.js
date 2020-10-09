@@ -5,6 +5,7 @@ import { authContext } from "../context/auth";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { Redirect } from "react-router-dom";
+import Footer from "../components/Footer";
 
 function NewJourney() {
   const { userId } = useContext(authContext);
@@ -64,6 +65,7 @@ function NewJourney() {
           placeholder="Title.."
         />
         <CKEditor
+          className="ckeditor"
           editor={ClassicEditor}
           data={journey.description}
           onChange={CKhandler}
@@ -71,9 +73,7 @@ function NewJourney() {
             // toolbar: ["ckfinder", "imageUpload"],
             plugin: ["ckfinder"],
             ckfinder: {
-              connectorPath: "http://localhost:5000/api/v1/upload",
-              uploadUrl: "http://localhost:5000/api/v1/upload",
-              openerMethod: "popup",
+              uploadUrl: "http://localhost:5000/upload",
             },
           }}
         />
@@ -81,6 +81,7 @@ function NewJourney() {
           Kirim
         </button>
       </div>
+      <Footer />
     </>
   );
 }

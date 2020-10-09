@@ -1,3 +1,5 @@
-const multiParty = require("connect-multiparty");
+// const multiParty = require("connect-multiparty");
 
-exports.multipartyMiddleware = multiParty({ uploadDir: "./images" });
+// exports.multipartyMiddleware = multiParty({
+//   uploadDir: "./public/images",
+// });

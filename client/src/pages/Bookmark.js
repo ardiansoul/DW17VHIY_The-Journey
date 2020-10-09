@@ -3,6 +3,8 @@ import Navbar from "../components/Navbar";
 import BookmarkCard from "../components/bookmarkCard";
 import Axios from "axios";
 import { authContext } from "../context/auth";
+import Footer from "../components/Footer";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 function Bookmark() {
   const [BookmarkData, setBookmarkData] = useState([]);
@@ -42,6 +44,7 @@ function Bookmark() {
       fetchHandle={fetchHandle}
     />
   ));
+  console.log(BookmarkData);
 
   return (
     <>
@@ -49,11 +52,31 @@ function Bookmark() {
       <div className="section">
         <h1 className="bookmark-title">Bookmark</h1>
         {isLoading ? (
-          <h3>Loading...</h3>
-        ) : (
+          // <h3>Loading...</h3>
+          <SkeletonTheme color="#bdc3c7" highlightColor="#95a5a6">
+            <div className="loading-skeleton">
+              <Skeleton width={300} height={150} />
+              <Skeleton width={300} height={40} />
+              <Skeleton width={300} height={100} />
+            </div>
+            <div className="loading-skeleton">
+              <Skeleton width={300} height={150} />
+              <Skeleton width={300} height={40} />
+              <Skeleton width={300} height={100} />
+            </div>
+            <div className="loading-skeleton">
+              <Skeleton width={300} height={150} />
+              <Skeleton width={300} height={40} />
+              <Skeleton width={300} height={100} />
+            </div>
+          </SkeletonTheme>
+        ) : BookmarkData.length != 0 ? (
           <div className="bookmark-grid">{list}</div>
+        ) : (
+          <div className="empty-alert">No Journeys have been Bookmarked</div>
         )}
       </div>
+      <Footer />
     </>
   );
 }

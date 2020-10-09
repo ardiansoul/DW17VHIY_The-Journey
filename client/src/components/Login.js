@@ -9,7 +9,7 @@ import { useHistory, useLocation } from "react-router-dom";
 
 // import { UserDatas } from "../../fakedatas/UserDatas";
 
-function Login(setShowModalRegister) {
+function Login({ setShowModalRegister, setShowModalLogin, showModalLogin }) {
   const [inputLogin, setInputLogin] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
 
@@ -86,6 +86,7 @@ function Login(setShowModalRegister) {
             <span
               onClick={() => {
                 setShowModalRegister(true);
+                setShowModalLogin(false);
               }}
               style={{
                 cursor: "pointer",

@@ -11,6 +11,7 @@ function Register({ registerHandler }) {
     password: "",
     phone: null,
     address: "",
+    image: null,
   });
 
   const [error, setError] = useState("");

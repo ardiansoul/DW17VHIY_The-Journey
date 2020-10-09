@@ -5,6 +5,8 @@ const {
 } = require("../middlewares/validation");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const path = require("path");
+const fs = require("fs");
 
 exports.getUser = async (req, res) => {
   const id = req.params.id;
@@ -128,6 +130,7 @@ exports.register = async (req, res) => {
       phone: req.body.phone,
       address: req.body.address,
       password: hashedPassword,
+      image: req.body.image,
     });
 
     const token = jwt.sign(
@@ -149,3 +152,53 @@ exports.register = async (req, res) => {
     console.log(err);
   }
 };
+
+// exports.updateUser = (req, res) => {
+//   console.log(req.body, req.files);
+// };
+
+// exports.updateUser = async (req, res) => {
+//   console.log(req);
+//   const { id } = req.params.id;
+//   let TempFile = req.files.upload;
+//   let tempPathFile = TempFile.path;
+//   console.log("user " + req.files.upload);
+//   try {
+//     const targetPathUrl = path.join(
+//       __dirname,
+//       `./public/images/${TempFile.name}`
+//     );
+
+//     if (
+//       path.extname(TempFile.originalFilename).toLowerCase() === ".png" ||
+//       ".jpg"
+//     ) {
+//       fs.rename(tempPathFile, targetPathUrl, async (err) => {
+//         console.log("file rename");
+
+//         const data = await user.update(
+//           {
+//             image: targetPathUrl,
+//           },
+//           {
+//             where: {
+//               id: id,
+//             },
+//           }
+//         );
+//       });
+//     }
+//     res.status(201).send({
+//       message: "user successfully updated",
+//       data,
+//     });
+//   } catch (err) {
+//     res.status(500).send(
+//       {
+//         message: "user failed updated",
+//         error: err,
+//       },
+//       err
+//     );
+//   }
+// };

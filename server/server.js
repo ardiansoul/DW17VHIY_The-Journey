@@ -6,7 +6,7 @@ const multiParty = require("connect-multiparty/index");
 const path = require("path");
 const fs = require("fs");
 
-const morgan = require("morgan");
+// const morgan = require("morgan");
 
 const userRoute = require("./routes/userRoute");
 const journeyRoute = require("./routes/journeyRoute");
@@ -29,22 +29,22 @@ dotenv.config();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use("/public", express.static("public"));
+app.use("/public", express.static(__dirname + "/public"));
 
 app.use("/api/v1", userRoute);
 app.use("/api/v1", journeyRoute);
 app.use("/api/v1", bookmarkRoute);
 
-app.post("/api/v1/upload", multipartyMiddleware, (req, res) => {
+app.post("/upload", multipartyMiddleware, (req, res) => {
   try {
     let TempFile = req.files.upload;
     let tempPathFile = TempFile.path;
-
+    console.log(tempPathFile);
     const targetPathUrl = path.join(
       __dirname,
       `./public/images/${TempFile.name}`
     );
-
+    console.log(targetPathUrl);
     if (
       path.extname(TempFile.originalFilename).toLowerCase() === ".png" ||
       ".jpg"
@@ -64,12 +64,13 @@ app.post("/api/v1/upload", multipartyMiddleware, (req, res) => {
       });
     }
   } catch (err) {
-    res.status(400).json({
-      message: err,
-    });
+    res.status(500).send(
+      {
+        error: err,
+      },
+      err
+    );
   }
-
-  console.log(req.files);
 });
 
 app.listen(port, () => {

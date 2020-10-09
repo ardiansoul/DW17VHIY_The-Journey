@@ -1,8 +1,12 @@
-* {
+/* * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: "Product Sans";
+} */
+figure {
+  margin: 0;
+  padding: 0;
 }
 
 h1,
@@ -11,14 +15,18 @@ h3,
 h4,
 h5,
 h6 {
+  margin: 0;
+  padding: 0;
+  font-family: "Product Sans";
   /* font-family: "Avenir"; */
 }
 
 body {
-  background: #c0c0c0;
+  background: #e0e0e0;
 }
 
 .modal {
+  box-shadow: 0 0 10px #14be55;
   position: fixed;
   z-index: 99;
   width: 300px;
@@ -99,23 +107,17 @@ body {
   color: #14be55;
 }
 .profile {
-  width: 100%;
-  text-align: center;
+  width: 300px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .avatar {
   border-radius: 50%;
   width: 50px;
   height: 50px;
-}
-
-.profile-image {
-  width: 200px;
-  height: 200px;
-  margin-top: 20px;
-}
-
-.proflie-title {
 }
 
 .dropdown-list {
@@ -146,46 +148,71 @@ body {
 
 .section {
   box-sizing: border-box;
-  height: 100vh;
+  /* height: 100vh; */
   width: 90%;
+  min-height: 80vh;
   margin: auto;
   margin-top: 50px;
+  position: relative;
 }
 
 .journey-title {
+  margin-bottom: 50px;
   font-size: 40px;
-  margin-left: 30px;
+  margin-left: 50px;
 }
 
 .journey-search {
   /* margin: 0 auto; */
+  width: 90%;
   margin-top: 20px;
   margin-bottom: 20px;
-  margin-left: 30px;
+  margin-left: 55px;
+  /* margin-left: 0px; */
+  height: auto;
+  box-sizing: border-box;
+  border: 1px solid #14be55;
+  border-radius: 5px;
 }
 
 .search-input {
   /* margin-left: 10px; */
   width: 85%;
   height: 40px;
-  border-radius: 5px;
+  border-top-left-radius: 5px;
+  padding-left: 20px;
+  border-bottom-left-radius: 5px;
+  /* border-radius: 5px; */
   border: none;
+  box-sizing: border-box;
+}
+
+.search-input:focus {
+  outline: none;
 }
 
 .btn-search {
+  width: 15%;
   height: 40px;
-  background: #2e86de;
+  box-sizing: border-box;
+  background: #14be55;
   color: white;
-  border-radius: 5px;
-  width: 10%;
+  border-radius: 0;
+  margin: 0;
+  /* border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-radius: 5px; */
+  /* width: 10%; */
 }
 
 .journey-grid,
 .bookmark-grid {
+  /* width: auto; */
+  /* width: 80%; */
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  /* margin: -5px; */
+  justify-content: flex-start;
+  /* margin: auto; */
 }
 
 .journey-card {
@@ -193,10 +220,14 @@ body {
   position: relative;
   /* border-radius: 50px; */
   /* border: 1px solid #000; */
-  margin: 20px 10px;
-  width: 200px;
+  margin: 20px 40px;
+  max-width: 300px;
   height: 300px;
   /* align-items: center; */
+}
+
+.journey-card:hover {
+  box-shadow: 0 0 10px #14be55;
 }
 
 .bookmark-title {
@@ -205,7 +236,6 @@ body {
 
 .bookmark-grid {
   margin-left: -20px;
-  justify-content: center;
 }
 
 .journey-alert {
@@ -224,10 +254,6 @@ body {
   top: 15px;
   right: -5px;
 }
-.journey-card-content {
-  display: flex;
-  flex-flow: column;
-}
 
 a {
   text-decoration: none;
@@ -235,22 +261,27 @@ a {
 }
 .journey-card-title {
   margin: 20px 10px;
-}
-
-.journey-card-title {
   position: absolute;
   top: 150px;
   height: 50px;
-  background: white;
+  /* background: white; */
   font-size: 16px;
+  overflow: hidden;
 }
 
 .journey-card-desc {
+  box-sizing: border-box;
   background: white;
   height: 300px;
   font-size: 14px;
-  width: 100%;
+  width: 300px;
   padding: 10px;
+  border-radius: 5px;
+  /* padding: 10px; */
+  overflow: hidden;
+  padding-bottom: 20px;
+  text-align: left;
+  color: #777777;
 }
 
 .journey-card-desc figure {
@@ -258,7 +289,8 @@ a {
 }
 
 .journey-card-desc figure > img {
-  width: 100%;
+  margin: -10px;
+  width: 300px;
   height: 150px;
   object-position: center;
   object-fit: cover;
@@ -282,16 +314,18 @@ a {
 }
 
 .modal-header {
+  box-sizing: border-box;
   height: 150px;
   /* border: 1px solid #000; */
   text-align: center;
-  padding: 40px;
+  padding: 40px 40px 0px;
   font-size: 30px;
 }
 
 .modal-alert {
   width: 250px;
-  background: #e70000;
+  background: #ff4444;
+  color: #ffffff;
   border-radius: 5px;
   line-height: 30px;
   height: 40px;
@@ -302,22 +336,30 @@ a {
   text-align: center;
   font-weight: 300;
   margin-top: 20px;
-  margin-left: -15px;
-  color: #ffffff;
+  margin-left: -23px;
+  margin-bottom: 20px;
 }
 .modal-alert::-webkit-scrollbar {
   display: none;
 }
+/* .modal-form {
+  margin: 0;
+  padding: 0;
+} */
 
 .modal-body {
+  box-sizing: border-box;
+
   /* border: 1px solid #000; */
   width: 100%;
-  height: 280px;
+  height: 250px;
   display: flex;
   flex-direction: column;
   -ms-overflow-style: none;
   scrollbar-width: none;
   overflow: scroll;
+  /* margin: 0;
+  padding: 0; */
 }
 
 label {
@@ -343,6 +385,7 @@ label {
 }
 
 .modal-button {
+  box-sizing: border-box;
   text-align: center;
 }
 
@@ -368,6 +411,7 @@ label {
   padding: 20px;
   border-radius: 5px;
   background: #ffffff;
+  /* width: 1100px; */
 }
 
 .detail-user {
@@ -390,7 +434,7 @@ label {
   object-position: center;
   object-fit: cover;
   border-radius: 5px;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .form-journey-title {
@@ -398,6 +442,7 @@ label {
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 20px;
+  box-sizing: border-box;
   outline: none;
   border: none;
   font-size: 16px;
@@ -408,4 +453,78 @@ label {
   margin-top: 20px;
   float: right;
   width: 150px;
+  background: #14be55;
+  color: #ffffff;
+}
+
+.image-add {
+  margin: auto;
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin-top: 20px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center center;
+}
+
+.profile-title {
+  margin-top: 5px;
+}
+
+.file-input {
+  background: #14be55;
+  color: #ffffff;
+  border-radius: 5px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+}
+
+.ck-editor__editable {
+  min-height: 300px;
+}
+
+.footer {
+  margin-top: 100px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background: #14be55;
+  color: #ffffff;
+  text-align: center;
+  line-height: 50px;
+}
+
+.empty-alert {
+  margin-top: 200px;
+  position: relative;
+  /* top: 100%; */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 50px;
+  background: #ffffff;
+  border: 1px solid #14be55;
+  border-radius: 5px;
+  line-height: 50px;
+  text-align: center;
+}
+
+.css-rp8bzg-SkeletonTheme {
+  display: flex;
+  flex-direction: row;
+}
+
+.loading-skeleton {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 50px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.react-loading-skeleton {
+  margin: 2px;
 }

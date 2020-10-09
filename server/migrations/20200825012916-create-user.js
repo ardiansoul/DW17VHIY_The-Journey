@@ -20,6 +20,9 @@ module.exports = {
       address: {
         type: Sequelize.STRING,
       },
+      image: {
+        type: Sequelize.STRING,
+      },
       password: {
         type: Sequelize.STRING,
       },

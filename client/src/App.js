@@ -23,7 +23,13 @@ function App() {
   }, [isLogin]);
   return (
     <authContext.Provider value={{ setUserId, userId, isLogin, setIsLogin }}>
-      {showModalLogin && <Login />}
+      {showModalLogin && (
+        <Login
+          setShowModalRegister={setShowModalRegister}
+          setShowModalLogin={setShowModalLogin}
+          showModalRegister={showModalRegister}
+        />
+      )}
       {showModalRegister && <Register />}
       <Router>
         <Switch>

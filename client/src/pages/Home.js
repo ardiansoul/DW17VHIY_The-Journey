@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import JourneyGrid from "../components/JourneyGrid";
 import HeroImage from "../components/HeroImage";
 import { authContext } from "../context/auth";
+import Footer from "../components/Footer";
 
 function Home({
   showModalLogin,
@@ -24,6 +25,7 @@ function Home({
         showModalLogin={showModalLogin}
         setShowModalLogin={setShowModalLogin}
       />
+      <Footer />
     </div>
   );
 }

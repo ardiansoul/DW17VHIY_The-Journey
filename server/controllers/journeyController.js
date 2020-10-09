@@ -1,9 +1,30 @@
 const { User, Journey } = require("../models");
 const { journeyValidator } = require("../middlewares/validation");
+const { Op } = require("sequelize");
+
+const path = require("path");
+const fs = require("fs");
 
 exports.getAllJourney = async (req, res) => {
   try {
     const data = await Journey.findAll({
+      where: req.query.query && {
+        title: {
+          [Op.like]: "%" + req.query.query + "%",
+        },
+      },
+      // { title: { like: "%" + req.query.query + "%" } || "" },
+      // sequelize.where(
+      //   sequelize.col("Journey.title"),
+      //   "ILIKE",
+      //   req.query.query || ""
+      // ),
+      // sequelize.where(
+      //   sequelize.col("Journey.description"),
+      //   "ILIKE",
+      //   req.query.query || ""
+      // ),
+
       order: [["updatedAt", "DESC"]],
       attributes: {
         exclude: ["createdAt", "updatedAt"],
@@ -62,6 +83,8 @@ exports.getJourney = async (req, res) => {
 };
 exports.postJourney = async (req, res) => {
   try {
+    console.log(req.body + req.files);
+
     const { error } = journeyValidator(req.body);
     if (error) return res.status(400).send({ error: error.details[0].message });
 

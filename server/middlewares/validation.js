@@ -7,6 +7,7 @@ const registerValidator = (data) => {
     password: Joi.string().min(8).required(),
     phone: Joi.number().required(),
     address: Joi.string().required(),
+    image: Joi.required(),
   });
   return schema.validate(data);
 };
